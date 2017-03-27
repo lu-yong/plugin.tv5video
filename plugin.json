@@ -1,0 +1,14 @@
+{
+  "type": "ecmascript",
+  "id": "tv5video.ca",
+  "file": "tv5video.js",
+  "category": "tv",
+  "showtimeVersion": "4.10",
+  "version": "1.1.0",
+  "author": "Anthony Dahanne (@anthonydahanne)",
+  "title": "TV5Video.ca",
+  "icon": "tv5.bmp",
+  "synopsis": "Showtime plugin to watch TV5 Canada's replay TV",
+  "description":"<p>TV5Video.ca Showtime plugin allows the integration of TV5 Canada videos into Showtime.</p><p>Most of the content is in french, seems to be accessible from outside Canada, and is encoded in 640x360 only :-(</p>",
+  "homepage":"https://github.com/anthonydahanne/showtime-plugin-tv5video.ca"
+}
