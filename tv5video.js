@@ -1,5 +1,5 @@
 /**
- * Showtime plugin to watch TV5Canada replay TV 
+ * Showtime plugin to watch TV5Canada replay TV
  *
  * Copyright (C) 2013-2015 Anthony Dahanne
  *
@@ -27,7 +27,7 @@
   var PLUGIN_PREFIX = "tv5video.ca:";
   var EMISSIONS_URL = "http://m.video.tv5.ca/api/json/application/a_z";
   var EPISODES_URL =  "http://m.video.tv5.ca/api/json/tools/loadSerieEmissions";
- 
+
   // Register a service (will appear on home page)
   var service = plugin.createService("TV5Video.ca", PLUGIN_PREFIX+"start", "tv", true, plugin.path + "tv5video.png");
 
@@ -71,18 +71,19 @@
     showtime.trace("Getting episodes list finally");
 
     var episodes = showtime.JSONDecode(getEpisodesResponse);
-	
+
     var allInfo = episodes.resultset;
     var index;
     for (index = 0; index < allInfo.length; ++index) {
       var episode = allInfo[index];
-      var publish_end = "Disponible jusqu'à : " + episode["publish_end"] +"\n\n";		
+      var publish_end = "Disponible jusqu'à : " + episode["publish_end"] +"\n\n";
       var metadata = {
         title: episode["title"],
         description: publish_end + episode["excerpt"],
         year: parseInt(episode["_meta"]["annee_production"]),
         duration: episode["_meta"]["duree"],
-        icon: episode["_documents"][0]["sizes"]["large"]
+        icon: episode["_documents"][0]["sizes"]["large"],
+        extra_data: "total:" + allInfo.length
       };
       page.appendItem(PLUGIN_PREFIX + "video:" + episode["_documents"][0]["_meta"]["url_m3u8"]
           + ":title:" + metadata.title + ":icon:" + metadata.icon + ":des:" + metadata.description, "directory", metadata);
@@ -104,10 +105,10 @@
     var videoParams = {
         sources: [{
                 url: pid,
-                mimetype: "xx",    
+                mimetype: "xx",
           }],
         no_subtitle_scan: true,
-        subtitles: []      
+        subtitles: []
       }
     page.source = 'videoparams:' + JSON.stringify(videoParams);
   });
