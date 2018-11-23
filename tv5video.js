@@ -50,6 +50,8 @@
 		  if(allTitles[show][index]["_meta"]["saison"] !== "") {
 			  season = " Saison " + allTitles[show][index]["_meta"]["saison"];
 		  }
+          if(2423 === allTitles[show][index]["id"] || 2451 === allTitles[show][index]["id"])
+              continue;
           page.appendItem(PLUGIN_PREFIX+"emission:"+allTitles[show][index]["id"]+":"+allTitles[show][index]["title"] + season, "directory", {
           title: allTitles[show][index]["title"] + season
    	    });
